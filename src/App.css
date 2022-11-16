@@ -1,0 +1,46 @@
+@font-face {
+  font-family: "KyoboHand";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@1.0/KyoboHand.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: "KyoboHand";
+}
+
+.DiaryEditor {
+  border: 2px solid green;
+  text-align: center;
+  padding: 20px;
+  margin: 30px 30px;
+}
+
+.DiaryEditor h2 {
+  margin-bottom: 20px;
+}
+
+.DiaryEditor input,
+textarea {
+  margin-bottom: 20px;
+  width: 70vw;
+  padding: 10px;
+}
+
+.DiaryEditor textarea {
+  height: 150px;
+}
+
+.DiaryEditor select {
+  /* width: 300px; */
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.DiaryEditor button {
+  width: 500px;
+  padding: 10px;
+  cursor: pointer;
+}

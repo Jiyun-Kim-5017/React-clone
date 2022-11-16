@@ -1,6 +1,7 @@
 import "./App.css";
 import MyHeader from "./MyHeader";
 import MyFooter from "./MyFooter";
+import Counter from "./Counter";
 
 function App() {
   const name = "june";
@@ -14,6 +15,7 @@ function App() {
       <b id="boldText">
         {number}는 {number % 2 === 0 ? "짝수" : "홀수"}
       </b>
+      <Counter />
       <MyFooter />
     </div>
   );

@@ -1,7 +1,8 @@
 import React, { useState } from "react";
+import OddEven from "./OddEven";
 
-const Counter = () => {
-  const [count, setCount] = useState(0);
+const Counter = ({ initialValue }) => {
+  const [count, setCount] = useState(initialValue);
 
   return (
     <div>
@@ -20,8 +21,13 @@ const Counter = () => {
       >
         -
       </button>
+      <OddEven count={count} />
     </div>
   );
+};
+
+Counter.defaultProps = {
+  initialValue: 4,
 };
 
 export default Counter;

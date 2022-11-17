@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 
-const DiaryEditor = () => {
+const DiaryEditor = ({ onCreate }) => {
   const [state, setState] = useState({ name: "", content: "", emotion: 1 });
   const nameInput = useRef();
   const contentInput = useRef();
@@ -27,7 +27,13 @@ const DiaryEditor = () => {
       return;
     }
 
+    onCreate(state.name, state.content, state.emotion);
     alert("저장 성공 :)");
+    setState({
+      name: "",
+      content: "",
+      emotion: 1,
+    });
   };
 
   return (
@@ -49,7 +55,7 @@ const DiaryEditor = () => {
           onChange={handleChangeState}
         />
       </div>
-      <div>
+      <div className="emotionBtn">
         <span>오늘의 기분 : </span>
         <select
           name="emotion"
@@ -62,8 +68,7 @@ const DiaryEditor = () => {
           <option value={4}>4</option>
           <option value={5}>5</option>
         </select>
-      </div>
-      <div>
+
         <button onClick={handleSubmit}>일기 저장하기</button>
       </div>
     </div>

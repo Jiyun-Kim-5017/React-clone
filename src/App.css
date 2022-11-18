@@ -82,3 +82,21 @@ textarea {
 .DiaryItem .date {
   color: lightgray;
 }
+
+.DiaryItem .content {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.DiaryItem .content textarea {
+  width: 100%;
+}
+
+.DiaryItem .btns {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.DiaryItem .btns * {
+  margin: 0 5px 0 5px;
+}

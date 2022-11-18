@@ -16,13 +16,13 @@ const DiaryEditor = ({ onCreate }) => {
 
   const handleSubmit = () => {
     if (state.name.length < 1) {
-      alert("이름을 1글자 이상 입력해 주세요.");
+      alert("이름은 1글자 이상 입력해 주세요.");
       nameInput.current.focus();
       return;
     }
 
     if (state.content.length < 1) {
-      alert("내용을 1글자 이상 입력해 주세요.");
+      alert("내용은 1글자 이상 입력해 주세요.");
       contentInput.current.focus();
       return;
     }

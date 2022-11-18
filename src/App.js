@@ -21,16 +21,24 @@ function App() {
     setData([newItem, ...data]);
   };
 
-  const onDelete = (targetId) => {
+  const onRemove = (targetId) => {
     const newDiaryList = data.filter((e) => e.id !== targetId);
     setData(newDiaryList);
     alert("일기가 삭제되었습니다.");
   };
 
+  const onEdit = (targetId, newContent) => {
+    setData(
+      data.map((el) =>
+        el.id === targetId ? { ...el, content: newContent } : el
+      )
+    );
+  };
+
   return (
     <div className="App">
       <DiaryEditor onCreate={onCreate} />
-      <DiaryList onDelete={onDelete} diaryList={data} />
+      <DiaryList onEdit={onEdit} onRemove={onRemove} diaryList={data} />
     </div>
   );
 }

@@ -21,10 +21,16 @@ function App() {
     setData([newItem, ...data]);
   };
 
+  const onDelete = (targetId) => {
+    const newDiaryList = data.filter((e) => e.id !== targetId);
+    setData(newDiaryList);
+    alert("일기가 삭제되었습니다.");
+  };
+
   return (
     <div className="App">
       <DiaryEditor onCreate={onCreate} />
-      <DiaryList diaryList={data} />
+      <DiaryList onDelete={onDelete} diaryList={data} />
     </div>
   );
 }

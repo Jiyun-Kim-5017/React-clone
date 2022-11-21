@@ -1,7 +1,7 @@
 import "./App.css";
 import DiaryEditor from "./DiaryEditor";
 import DiaryList from "./DiaryList";
-import { useState, useRef, useEffect, useMemo } from "react";
+import { useState, useRef, useEffect, useMemo, useCallback } from "react";
 
 //https://jsonplaceholder.typicode.com/comments
 
@@ -30,7 +30,7 @@ function App() {
     getData();
   }, []); //빈배열 인수 넣으면 마운트 시에 실행
 
-  const onCreate = (name, content, emotion) => {
+  const onCreate = useCallback((name, content, emotion) => {
     const created_date = new Date().getTime();
 
     const newItem = {
@@ -41,8 +41,8 @@ function App() {
       id: dataId.current,
     };
     dataId.current += 1;
-    setData([newItem, ...data]);
-  };
+    setData((data) => [newItem, ...data]); //함수형 업데이트
+  }, []);
 
   const onRemove = (targetId) => {
     const newDiaryList = data.filter((e) => e.id !== targetId);
@@ -61,7 +61,6 @@ function App() {
   const getDiaryAnalysis = useMemo(() => {
     let emotionSum = 0;
     data.map((el) => (emotionSum += el.emotion));
-    console.log(emotionSum);
     const emotionAverage = (emotionSum / data.length).toFixed(2);
     return emotionAverage;
   }, [data.length]);

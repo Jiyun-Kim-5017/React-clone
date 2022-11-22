@@ -44,19 +44,18 @@ function App() {
     setData((data) => [newItem, ...data]); //함수형 업데이트
   }, []);
 
-  const onRemove = (targetId) => {
-    const newDiaryList = data.filter((e) => e.id !== targetId);
-    setData(newDiaryList);
+  const onRemove = useCallback((targetId) => {
+    setData((data) => data.filter((e) => e.id !== targetId));
     alert("일기가 삭제되었습니다.");
-  };
+  }, []);
 
-  const onEdit = (targetId, newContent) => {
-    setData(
+  const onEdit = useCallback((targetId, newContent) => {
+    setData((data) =>
       data.map((el) =>
         el.id === targetId ? { ...el, content: newContent } : el
       )
     );
-  };
+  }, []);
 
   const getDiaryAnalysis = useMemo(() => {
     let emotionSum = 0;
